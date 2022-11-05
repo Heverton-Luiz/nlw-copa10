@@ -59,7 +59,7 @@ header { /*Imagem no topo <nlw/> COPA CALENDÁRIO*/
 
 #cards { /*comando pra fazer dois cards um ao lado do outro*/
   display: flex;
-  flex-direction: column; /*row = pra deixar um card do lado do outro e column pra deixar um em cima do outro*/
+  flex-direction: row; /*row = pra deixar um card do lado do outro e column pra deixar um em cima do outro*/
   gap: 32px; /*Espaçamento dos lados*/
 }
 
@@ -161,10 +161,10 @@ header { /*Imagem no topo <nlw/> COPA CALENDÁRIO*/
   }
 }
 
-@media (min-width: 400px) {
+/*@media (min-width: 400px) {
   #cards {
-    max-width: 700px; /*largura máxima*/
-    flex-direction: row; /*direcionamento*/
-    flex-wrap: wrap;
+    max-width: 900px; /*largura máxima*/
+    /*flex-direction: row; /*direcionamento*/
+    /*flex-wrap: wrap;
   }
 }
