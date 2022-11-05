@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root { /*pega no código raíz ou seja HTML*/
+  --card-title-border-color: #746615; /*cor da borda da data do dia*/
+  --card-color-primary: #F7DD43; /*cor da borda abaixo*/
+  --card-bg-color: #1D1C19; /*cor de fundo do cartão*/
+  --bg: url(./assets/bg-yellow.svg)
+}
+
+body.blue {
+  --card-title-border-color: #338AF3;
+  --card-color-primary: #338AF3;
+  --card-bg-color: #202024;
+  --bg: url(./assets/bg-blue.svg);
+}
+
+body.green {
+  --card-color-primary: #047C3F;
+  --card-title-border-color: #047C3F; /*cor da borda*/
+  --card-bg-color: #1A1F1B; /*fundo do cartão*/
+  --bg: url(./assets/bg-green.svg);
+}
+
+body * {
+  font-family: 'Roboto', sans-serif; /*FONTE DE TEXTO*/
+}
+
+ul { /*pontos da lista ul*/
+  list-style: none; /*código desativando os pontos da ul*/
+} 
+
+body { /*plano de fundo do site*/
+  background-color: #121214;
+  background-image: var(--bg);
+  background-size: cover;
+  background-repeat: no-repeat; /*direcionamento a imagem para CSS*/
+  background-position: top center; /*posicionamento eixo X Horizontal*/
+  /*background-position-y: -715px; /*posicionamento eixo Y Vertical*/
+}
+
+#app { /*Div da imagem no topo <nlw/> COPA CALENDÁRIO*/
+  width: fit-content; /*width = largura | fit = ajustar | content = conteúdo*/
+  margin: auto; /*margem*/
+  padding-top: 52px;
+}
+
+header { /*Imagem no topo <nlw/> COPA CALENDÁRIO*/
+  margin-bottom: 63px; /*margem abaixo*/
+  text-align: center; /*alinhamento de texto*/
+  /*OU   header img
+  display: flex;
+  justify-content: center;
+  margin: 0 auto; */
+}
+
+#cards { /*comando pra fazer dois cards um ao lado do outro*/
+  display: flex;
+  flex-direction: column; /*row = pra deixar um card do lado do outro e column pra deixar um em cima do outro*/
+  gap: 32px; /*Espaçamento dos lados*/
+}
+
+#card { /*Cards com jogos e horários OBS:(Aqui os cards estão sendo identificados na mesma id pelo CSS)*/
+  padding: 32px 23px; /*preenchimento*/
+  text-align: center; /*alinhamento de textos*/ 
+  background: var(--card-bg-color); /*cor de fundo dos cards*/
+  border-bottom: 2px solid var(--card-color-primary); /*borda de baixo*/
+  border-radius: 6px; /*arredondamento*/
+}
+
+#card h2 {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px 16px; /*preenchimento*/
+  border: 1px solid var(--card-title-border-color); /*borda da data do jogo e cor da caixa do dia do jogo OBS:(pode se alterar grossura e o tiopo da borda aqui) ex: solid = linha | dashed = linha serrilhada*/
+  border-radius: 6px; /*arredondamento de borda*/
+
+  width: fit-content; /*ajustamento de caixa /borda*/
+  margin-inline: auto;
+  margin-bottom: 53px; /*maargem abaixo entre caixa de dia e times*/
+
+  color: #F7DD43; /*cor do dia do jogo*/
+} 
+
+#card h2 span { /*fonte*/
+  color: #e1e1e6;
+  font-size: 14px; /*tamanho da fonte*/
+  text-transform: uppercase; /*pode se dizer que é o CapsLock para deixar tudo maiúsculo*/
+} 
+
+#card ul {
+  display: flex; /*ao usar o código display é possível usar os códigos abaixo flex-direction, display e GAP*/
+  flex-direction: column;
+  gap: 24px;
+
+  width: 270px; /*largura*/
+} 
+
+#card ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} 
+
+#card ul li + li { /*Linha entre times e horários*/
+  padding-top: 24px; /*espaçamento em cima*/
+  border-top: 1px solid #323238; /*cor da linha*/
+} 
+
+#card ul li { /*horários dos jogos*/
+  font-weight: 900; 
+  font-size: 36px; /*tamanho dos números*/
+  line-height: 125%; /*altura dos números*/
+  color: #E1E1E6; /*cor dos números*/
+} 
+
+#card ul li strong:hover , /*botando a vírgla vc agrupa mais de um seletor pra receber a mesma ordem*/
+#card ul li img:hover,
+#card h2:hover{
+  transform: scale(1.1);
+}
+
+#card h2,
+#card ul li strong,
+#card ul li img {
+  transition: transform 0.8s;
+}
+
+#card {
+  opacity: 0;
+  animation: appear .7s forwards;
+}
+
+#card:nth-child(1) {
+  animation-delay: 1s;
+}
+
+#card:nth-child(2) {
+  animation-delay: 4s;
+}
+
+
+#card:nth-child(3) {
+  animation-delay: 7s;
+}
+
+@keyframes appear { /*animações*/
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 400px) {
+  #cards {
+    max-width: 700px; /*largura máxima*/
+    flex-direction: row; /*direcionamento*/
+    flex-wrap: wrap;
+  }
+}
